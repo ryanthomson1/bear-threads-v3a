@@ -3,6 +3,7 @@ import GeneratePosts from './tabs/GeneratePosts';
 import Replies from './tabs/Replies';
 import ImageBrowser from './tabs/ImageBrowser';
 import AppSettings from './tabs/AppSettings';
+import { Card } from './components/ui/card';
 
 export default function App() {
   const [activeTab, setActiveTab] = React.useState('generate');
@@ -18,12 +19,17 @@ export default function App() {
           <button onClick={() => setActiveTab('settings')}>Settings</button>
         </nav>
       </header>
-      <main className="p-6">
-        {activeTab === 'generate' && <GeneratePosts />}
-        {activeTab === 'replies' && <Replies />}
-        {activeTab === 'images' && <ImageBrowser />}
-        {activeTab === 'settings' && <AppSettings />}
+      <main className="container grid grid-cols-12 gap-4 p-6">
+        <Card className="col-span-12 p-4">
+          {activeTab === 'generate' && <GeneratePosts />}
+          {activeTab === 'replies' && <Replies />}
+          {activeTab === 'images' && <ImageBrowser />}
+          {activeTab === 'settings' && <AppSettings />}
+        </Card>
       </main>
+      <footer className="p-4 text-center text-sm text-[#8a8a8a] border-t border-[#373940]">
+        © 2023 Bear Threads Generator. All rights reserved.
+      </footer>
     </div>
   );
 }

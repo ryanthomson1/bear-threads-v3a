@@ -1,18 +1,15 @@
 import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
 export default function ReplyPanel() {
   return (
-    <div>
-      {/* ReplyPanel Component */}
-    </div>
-  );
-}
-import React from 'react';
-
-export default function ReplyPanel() {
-  return (
-    <div>
-      {/* ReplyPanel Component */}
-    </div>
+    <Card className="grid grid-cols-12 gap-4">
+ <CardHeader>
+        <CardTitle>Reply Panel</CardTitle>
+ </CardHeader>
+      <CardContent>
+ {/* ReplyPanel Content */}
+      </CardContent>
+    </Card>
   );
 }
