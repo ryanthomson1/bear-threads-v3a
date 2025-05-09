@@ -1,6 +1,6 @@
 
 
-import { ExclamationCircleIcon, QuestionMarkCircleIcon, BuildingLibraryIcon, SparklesIcon } from '@heroicons/react/outline';
+import { ExclamationCircleIcon, QuestionMarkCircleIcon, BuildingLibraryIcon, SparklesIcon } from '@heroicons/react/24/outline';
 
 export interface TagType {
   label: string;

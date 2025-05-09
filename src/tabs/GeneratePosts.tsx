@@ -3,24 +3,25 @@
 "use client";
 
 import { useState } from "react";
-import { generatePosts } from "@/lib/generatePosts";
-import { generateImages } from "@/lib/generateImages";
-import { generateImagePrompt } from "@/lib/generateImagePrompt";
-import { savePostToFirestore } from "@/lib/savePostToFirestore";
-import { toggleImageGeneration } from "@/lib/generateImagePrompt";
+import { generatePosts } from "../lib/generatePosts";
+import { generateImages } from "../lib/generateImages";
+import { generateImagePrompt } from "../lib/generateImagePrompt";
+import { savePostToFirestore } from "../lib/savePostToFirestore";
+import { toggleImageGeneration } from "../lib/generateImagePrompt";
 
+import { generateImageForPost } from "../lib/generateImageForPost";
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Switch } from "@/components/ui/switch";
+import { Button } from "../components/ui/button";
+import { Textarea } from "../components/ui/textarea";
+import { ScrollArea } from "../components/ui/scroll-area";
+import { Switch } from "../components/ui/switch";
 
-import { Spinner } from "@/components/ui/spinner";
-import { SparklesIcon } from '@heroicons/react/24/outline'; 
+import { Spinner } from "../components/ui/spinner";
+import { SparklesIcon } from '@heroicons/react/24/outline';
 type PostWithImage = {
   text: string;
-  imageUrl: string;
+  imageUrl: string | undefined;
 };
 
 export default function GeneratePostsTab() {
@@ -30,24 +31,33 @@ export default function GeneratePostsTab() {
   const [isLoading, setIsLoading] = useState(false);
   const [generateImagesEnabled, setGenerateImagesEnabled] = useState(true);
 
+  // Function to simulate image generation (replace with actual API call)
+  const generateImageForPost = async (postText: string): Promise<string> => {
+    // In a real implementation, this would call the DALL-E 3 API
+    // using the image instructions and postText to create a prompt.
+    // For now, return a placeholder image URL.
+    return `https://via.placeholder.com/400x400?text=${encodeURIComponent(postText.substring(0, 20))}`;
+  };
+
   const handleGenerate = async () => {
+    console.log('handleGenerate called');
     setIsLoading(true);
-    try {
-      toggleImageGeneration(generateImagesEnabled);
-
+    try { // Assuming generatePosts returns string[]
       const generatedPosts = await generatePosts(prompt);
-      const result: PostWithImage[] = [];
+      const postsWithImages = [];
 
-      for (const post of generatedPosts) {
-        const imagePrompt = generateImagePrompt(post);
-        const imageUrls = imagePrompt ? await generateImages(imagePrompt) : [];
-        const imageUrl = Array.isArray(imageUrls) ? imageUrls[0] : imageUrls;
-        //await savePostToFirestore(post, imageUrl, "gemini");
-        result.push({ text: post, imageUrl });
+ for (const postText of generatedPosts) {
+ console.log('generateImagesEnabled:', generateImagesEnabled);
+ let imageUrl = undefined;
+ if (generateImagesEnabled) {
+ imageUrl = await generateImageForPost(postText);
+ }
+
+        postsWithImages.push({ text: postText, imageUrl });
       }
-
-      setPosts(result);
-    } catch (error) { console.error("❌ Failed to generate posts:", error);
+      setPosts(postsWithImages);
+    } catch (error) {
+      console.error("❌ Failed to generate posts:", error);
       setError("Failed to generate posts. Please try again.");
     } finally {
       setIsLoading(false);
@@ -70,7 +80,7 @@ export default function GeneratePostsTab() {
               <Switch
                 id="image-switch"
                 checked={generateImagesEnabled}
-                onCheckedChange={(val) => setGenerateImagesEnabled(val)}
+                onCheckedChange={(val: boolean) => setGenerateImagesEnabled(val)}
               />
               <label htmlFor="image-switch">Generate images with posts</label>
             </div>

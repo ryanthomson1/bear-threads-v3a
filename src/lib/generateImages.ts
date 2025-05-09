@@ -28,16 +28,24 @@ export async function generateImages(prompt: string): Promise<string[]> {
       }),
     });
 
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`❌ DALL·E API error: ${response.status} ${response.statusText}`, errorText);
+      return [];
+    }
+
     const data = await response.json();
 
+    console.log('Raw DALL·E response data:', data); // Log the raw data
+
     if (!data?.data || !Array.isArray(data.data)) {
-      console.error('❌ Invalid DALL·E response format:', { data, response });
+      console.error('❌ Invalid DALL·E response format: Expected data.data to be an array.', data);
       return [];
     }
 
     return data.data.map((item: any) => item.url);
   } catch (error) {
     console.error('❌ DALL·E image generation failed:', error);
-    return [];
+    return []; // Add return statement here
   }
 }

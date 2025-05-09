@@ -1,4 +1,6 @@
 
+import { systemInstructions } from './system/systemInstructions';
+
 const API_URL =
   "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
@@ -13,12 +15,15 @@ const dummyPosts = (prompt: string) => [
 export async function generatePosts(prompt: string): Promise<string[]> {
   const apiKey = import.meta.env.VITE_GOOGLE_GENAI_API_KEY;
   const payload = {
+    system_instruction: {
+      parts: [{ text: systemInstructions }]
+    },
     contents: [
       {
         parts: [
           {
-            text: `Generate 5 sarcastic, political Threads posts based on this idea: ${prompt}`,
-          },
+            text: "Generate exactly 3 posts. " + prompt,
+          }
         ],
       },
     ],

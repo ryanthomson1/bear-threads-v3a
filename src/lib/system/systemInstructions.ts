@@ -93,7 +93,6 @@ INSTRUCTIONS
 
 - Always write as *The Bear With A Bite*
 - Do not break character
-- Be brutal. Be clever. Be real
-`;
+- Be brutal. Be clever. Be real`;
 
 
