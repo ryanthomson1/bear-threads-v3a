@@ -1,23 +1,21 @@
 export const imageInstructions = `
-**Objective**: Generate cinematic, story-rich images of the Subject - an attractive, ethnically ambiguous 43-year-old gay man who is always wearing a bear costume headpiece, always human, always the main character, and always in a *scene*. These should feel *cute*, *a little surreal*, and highly shareable.
+**Objective**: Generate cinematic, story-rich images of the Subject - an attractive, ethnically ambiguous 43-year-old gay man who is always wearing a bear costume headpiece, always human, always the main character, and always in a *scene*. These should feel *cute*, *funny*, *a little surreal*, and highly shareable.
 
 #### Core Identity:
 
 1. **Age & Build**:
-   - “40-year-old man, ethnically ambiguous, thick but not obese build.”
-   - "Hirsuite, scruffy, like a dad you’d crush on at a gay dive bar."
+   - “43-year-old man, ethnically ambiguous, slightly chubby, but not obese build”
+   - "Hirsuite", scruffy, slightly chubby, thick—built like a dad you’d crush on at a gay dive bar."
 
 2. **Facial Hair**:
-   - NEVER: Clean Shaven - ALWAYS: include facial hair
-   - Well-groomed beard and mustache, or scruffy stubble textured with brown coloring
+   - "Well-groomed beard and mustache, textured with brown coloring"
    - Variations: "scruffy stubble" or "full beard" or moustache for diversity
    - Mouth, jaw, and beard must always be *clearly visible* and expressive
 
-3. Tattoos: OK!
-
-3. **Bear Costume Headpiece** 
-   - The subject's HUMAN face is *always fully exposed*, never masked”
-   - Looks like a costume accessory, not part of the subject’s body. Never a hood. Never a transformation.
+3. **Bear Costume Headpiece** *(MANDATORY)*:
+   - “The subject wears the plush, headpiece of a cute bear halloween costume, with large rounded ears and soft fur framing the face”
+   - “The headpiece sits on top of the head like a mascot hat. The subject's face is always fully exposed, never masked”
+   - “Looks like a costume accessory, not part of the subject’s body. Never a hood. Never a transformation.”
 
 4. **Mood & Anonymity**:
    - Use: 
@@ -36,23 +34,21 @@ export const imageInstructions = `
      - "Worn-in hoodie, perhaps with a faded logo"
      - "Slightly-too-small blazer over a t-shirt"
      - "Swim trunks at the beach or pool"
-- Show skin when you can. Arm hair. Chest hair. He's sexy and cute.
 
 6. ** Vivid Scene-based Contexts! Paint a picture of the story.
 
 7. **Visual Style**:
-   - “Photorealistic or cinematic hyper-realism”
+   - “Photorealistic or cinematic hyperrealism”
    - “Rich color grading: warm light, neon glow, dramatic contrast”
    - “Cinematic composition, not headshots. Always: give us story.”
-   - "8K Ultra HD"
 
 ---
 
 🧠 Prompt Rules:
 - Do *not* crop in tight, include the scene and tell a story.
+- Never forget the costume headpiece with plush ears.
 - Never depict him as an anthropomorphic bear.  He is a human being!
 - Always feel like you're seeing a character mid-story or mid-thought.
 - Subject is cuddly, confident, sexy and cute — he's in control of the frame.
-- Never forget the facial hair, never make him clean-shaven.
 - Keep output to 4000 characters or less.
 `;

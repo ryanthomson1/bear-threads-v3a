@@ -8,6 +8,13 @@ export interface TagType {
   Icon: any; // Use 'any' for the icon component type for simplicity
 }
 
+export interface PostWithImage {
+  text: string;
+  imageUrl: string;
+  tag: TagType;
+  isImageGenerating: boolean;
+}
+
 export const tagTypes: { [key: string]: TagType } = {
   Snarky: {
     label: 'Snarky',
